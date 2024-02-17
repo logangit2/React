@@ -13,7 +13,7 @@ function App() {
     JSON.parse(localStorage.getItem("logindata"))
   );
 
-  console.log(loggedUser);
+  // console.log(loggedUser);
   return (
     <div className="App">
       <userContext.Provider value={{ loggedUser, setLoggedUser }}>

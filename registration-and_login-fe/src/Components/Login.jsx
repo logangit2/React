@@ -16,6 +16,9 @@ export const Login = () => {
     message: "",
   });
 
+  // const [password, setPassword] = useState(true);
+  const [email, setEmail] = useState(true);
+
   const context = useContext(userContext);
   const navigate = useNavigate();
 
@@ -25,6 +28,14 @@ export const Login = () => {
     });
 
     // console.log(user);
+  }
+
+  function handleClick() {
+    if (loginUser.email.length) {
+      setEmail(true);
+    } else {
+      setEmail(false);
+    }
   }
   function handleSubmit(e) {
     e.preventDefault();
@@ -39,9 +50,13 @@ export const Login = () => {
       .then((data) => {
         console.log(data);
         if (data.status === 404) {
-          setMessage({ type: "wrong", message: "Incorrect email or password" });
+          setMessage({
+            type: "wrong",
+            message: "Incorrect email or password",
+          });
         } else if (data.status === 200) {
           setMessage({ type: "success", message: "login" });
+
           localStorage.setItem("logindata", JSON.stringify(data.status));
           context.setLoggedUser(JSON.parse(localStorage.getItem("logindata")));
           navigate("/home");
@@ -49,8 +64,11 @@ export const Login = () => {
         return data.json();
       })
       .then((data) => {
-        console.log(data);
         console.log(context.loggedUser);
+        console.log(data);
+        if (data.passwordMessage !== undefined) {
+          setLoginUser({ ...loginUser, password: "" });
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -62,11 +80,12 @@ export const Login = () => {
         <h2>LOGIN</h2>
         <input
           type="email"
-          required
           placeholder="Enter your Email"
           name="email"
-          className="inp"
+          className={email ? "inp" : "inp wrong-email"}
           onChange={handleForm}
+          value={loginUser.email}
+          required
         />
 
         <input
@@ -74,12 +93,15 @@ export const Login = () => {
           placeholder="Enter your password"
           name="password"
           className="inp"
+          value={loginUser.password}
           required
           onChange={handleForm}
         />
 
         <div className="login-bottom">
-          <button>Login</button>
+          <button onClick={handleClick} className="submit-btn">
+            Login
+          </button>
           <p>
             Dont have an account ? <Link to="/register">Register</Link>
           </p>

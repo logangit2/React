@@ -45,11 +45,16 @@
   font-weight: bold;
 }
 
-.login-bottom button {
+.login-bottom .submit-btn {
   padding: 7px 15px;
   background-color: #d6ff00;
   border-radius: 2px;
   border: 0.5px solid gray;
+  cursor: pointer;
+}
+
+.login-bottom .submit-btn:hover {
+  background-color: aqua;
 }
 
 .success {
@@ -59,6 +64,33 @@
 .wrong {
   color: red;
   font-weight: bold;
+  animation: shake 0.5s alternate;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(5px);
+  }
+  50% {
+    transform: translateX(-4px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+  100% {
+    transform: translateX(3);
+  }
+}
+
+.wrong-pass {
+  border: 3px solid red;
+}
+
+.wrong-email {
+  border: 3px solid red;
 }
 
 @media screen and (max-width: 750px) {

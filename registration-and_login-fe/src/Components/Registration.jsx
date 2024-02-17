@@ -44,6 +44,9 @@ export const Registration = () => {
       })
       .then((data) => {
         console.log(data);
+        if (data.message !== undefined) {
+          setMessage("Fill all the fields");
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -62,7 +65,6 @@ export const Registration = () => {
               type="text"
               placeholder="Enter your name"
               name="name"
-              required
               className="inp"
               value={user.name}
               onChange={handleForm}
@@ -70,7 +72,6 @@ export const Registration = () => {
 
             <input
               type="email"
-              required
               placeholder="Enter your Email"
               name="email"
               className="inp"
@@ -84,7 +85,6 @@ export const Registration = () => {
               name="password"
               className="inp"
               value={user.password}
-              required
               onChange={handleForm}
             />
 
@@ -95,7 +95,6 @@ export const Registration = () => {
               value={user.age}
               max="100"
               min="15"
-              required
               className="inp"
               onChange={handleForm}
             />
