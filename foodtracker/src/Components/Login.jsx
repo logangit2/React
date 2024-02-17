@@ -41,14 +41,14 @@ export const Login = () => {
             messsage: "Email doesn't exist",
           });
         }
-        console.log(data);
+        // console.log(data);
         data.json(data).then((data) => {
-          console.log(data.message);
+          // console.log(data.message);
 
           if (data.token !== undefined) {
-            localStorage.setItem("nutrifyUser", JSON.stringify(data));
-            tokenData.setUserData(data);
-
+            localStorage.setItem("nutrifyUser", data.token);
+            tokenData.setUserData(data.token);
+            // console.log(data.token);
             navigate("/track");
           }
         });

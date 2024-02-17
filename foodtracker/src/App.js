@@ -1,19 +1,19 @@
-import { Routes, Route, json } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { Login } from "./Components/Login";
 import { Register } from "./Components/Register";
 import { TrackFood } from "./Components/TrackFood";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 import { Private } from "./Components/Private";
 import { Demo } from "./Components/Demo";
 
 export const userContext = createContext();
 function App() {
-  const [userData, setUserData] = useState(
-    JSON.parse(localStorage.getItem("nutrifyUser"))
-  );
-  console.log("datss", " ", userData);
+  const [userData, setUserData] = useState(localStorage.getItem("nutrifyUser"));
+
+  // console.log(userData);
+  // console.log("tokenData", " ", userData);
 
   // useEffect(() => {
   //   if (localStorage.getItem("nutrifyUser") !== null) {

@@ -5,6 +5,6 @@ import { userContext } from "../App";
 
 export const Private = ({ Component }) => {
   const loginData = useContext(userContext);
-  console.log(loginData);
+  // console.log(loginData);
   return loginData.userData !== null ? <Component /> : <Navigate to="/login" />;
 };
