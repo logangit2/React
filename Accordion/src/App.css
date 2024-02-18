@@ -1,0 +1,38 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.accordion {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 50%;
+  text-align: center;
+}
+
+/* .acc {
+  width: 50%;
+} */
+
+.acc {
+  background-color: #69e09a;
+  padding: 10px 0;
+}
+
+.faq {
+  display: none;
+}
+
+.faq.active {
+  transition: 1s ease;
+  display: block;
+}
